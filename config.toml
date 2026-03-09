@@ -1,0 +1,72 @@
+# ============================================================================
+# Mythic L2 Firedancer Config -- Mini Tier
+# Requirements: 8+ cores, 32GB RAM, 500GB SSD
+# Role: RPC-only node, lean tile layout, no full transaction history
+# Install: curl -sSf mythic.sh/install | sudo bash
+# ============================================================================
+
+name = "mythic-l2-mini"
+user = "mythic"
+scratch_directory = "/mnt/mythic/fddev-data"
+dynamic_port_range = "8100-8200"
+
+# -- Log ----------------------------------------------------------------------
+[log]
+    path = "/var/log/mythic/firedancer.log"
+    level_logfile = "INFO"
+    level_stderr = "NOTICE"
+
+# -- Ledger -------------------------------------------------------------------
+[ledger]
+    path = "/mnt/mythic/ledger"
+    account_indexes = []
+    limit_size = 10000000
+
+# -- Gossip -------------------------------------------------------------------
+[gossip]
+    entrypoints = ["20.96.180.64:8001"]
+    port = 8001
+
+# -- Consensus ----------------------------------------------------------------
+[consensus]
+    identity_path = "/etc/mythic/validator-identity.json"
+    vote_account_path = "/etc/mythic/vote-account.json"
+    known_validators = ["H65abAs3fffWo2pyLgeoV5VjC7XQ6bt4gRUZ1i2zyRSc"]
+    snapshot_fetch = true
+    genesis_fetch = true
+
+# -- RPC ----------------------------------------------------------------------
+[rpc]
+    port = 8899
+    full_api = true
+    bind_address = "0.0.0.0"
+    transaction_history = false
+    extended_tx_metadata_storage = false
+
+# -- Snapshots ----------------------------------------------------------------
+[snapshots]
+    incremental_snapshots = true
+
+# -- Tile Layout (lean: 8+ cores) --------------------------------------------
+[layout]
+    affinity = "auto"
+    net_tile_count = 1
+    quic_tile_count = 1
+    verify_tile_count = 1
+    bank_tile_count = 1
+    shred_tile_count = 1
+
+# -- Development (required for Mythic L2 custom genesis) ----------------------
+[development]
+    sandbox = false
+    no_clone = true
+    bootstrap = false
+
+    [development.gossip]
+        allow_private_address = true
+
+# -- GUI (optional monitoring dashboard) --------------------------------------
+[tiles.gui]
+    enabled = true
+    gui_listen_address = "127.0.0.1"
+    gui_listen_port = 8079
