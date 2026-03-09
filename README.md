@@ -18,13 +18,13 @@
 ## Quick Start
 
 ```bash
-curl -sSf mythic.sh/install | sudo bash
+curl -sSfL mythic.sh/install | sudo bash
 ```
 
 Or force the mini tier:
 
 ```bash
-MYTHIC_TIER=mini curl -sSf mythic.sh/install | sudo bash
+MYTHIC_TIER=mini curl -sSfL mythic.sh/install | sudo bash
 ```
 
 ## Requirements
@@ -86,7 +86,7 @@ journalctl -u mythic-validator -f
 Ready for more? Upgrade to the standard validator tier for full transaction history and staking rewards:
 
 ```bash
-MYTHIC_TIER=validator curl -sSf mythic.sh/install | sudo bash
+MYTHIC_TIER=validator curl -sSfL mythic.sh/install | sudo bash
 ```
 
 See [mythic-validator](https://github.com/MythicFoundation/mythic-validator) for standard tier requirements.
@@ -94,7 +94,7 @@ See [mythic-validator](https://github.com/MythicFoundation/mythic-validator) for
 ## Mythic CLI
 
 ```bash
-curl -sSf mythic.sh/cli | bash
+curl -sSfL mythic.sh/cli | bash
 mythic validator status
 ```
 
