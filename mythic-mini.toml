@@ -1,0 +1,53 @@
+# ============================================================================
+# Mythic L2 Firedancer Config -- Mini Tier
+# Requirements: 8+ cores, 32GB RAM, 500GB SSD
+# Role: RPC-only node, lean tile layout, no full transaction history
+# ============================================================================
+
+[name]
+  name = "mythic-l2-mini"
+
+# -- Identity ------------------------------------------------------------------
+[consensus]
+  identity_path       = "/etc/mythic/validator-identity.json"
+  vote_account_path   = "/etc/mythic/vote-account.json"
+  expected_genesis_hash = ""
+  wait_for_supermajority_at_slot = 0
+  known_validators    = []
+  snapshot_fetch      = true
+  genesis_fetch       = true
+  snapshot_interval_slots = 500
+
+# -- Ledger --------------------------------------------------------------------
+[ledger]
+  path                = "/mnt/mythic/ledger"
+  limit_size          = 10000000
+  require_tower       = false
+
+# -- RPC -----------------------------------------------------------------------
+[rpc]
+  port                = 8899
+  bind_address        = "0.0.0.0"
+  pubsub_port         = 8900
+  full_api            = true
+  private_rpc         = false
+  transaction_history = false
+
+# -- Gossip --------------------------------------------------------------------
+[gossip]
+  port                = 8001
+  entrypoints         = ["20.96.180.64:8001"]
+
+# -- Network -------------------------------------------------------------------
+[net]
+  dynamic_port_range  = "8100-8200"
+
+# -- Log -----------------------------------------------------------------------
+[log]
+  path                = "/var/log/mythic/firedancer.log"
+  level_logfile       = "INFO"
+  level_stderr        = "WARN"
+
+# -- Tiles (lean: 8 cores) ----------------------------------------------------
+[tiles]
+  layout = "1 net, 1 quic, 1 verify, 1 dedup, 1 pack, 1 bank, 1 poh, 1 shred, 1 store, 1 sign"
