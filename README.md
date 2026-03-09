@@ -9,7 +9,7 @@
 
 **Run a lightweight Mythic L2 RPC node on modest hardware. Powered by Firedancer.**
 
-[Install](https://mythic.sh/install) · [Documentation](https://mythic.sh/docs/validators) · [Network Status](https://mythic.sh/tokenomics)
+[Install](https://mythic.sh/install) · [Documentation](https://mythiclabs.io/docs) · [Network Status](https://mythic.sh/tokenomics)
 
 </div>
 
